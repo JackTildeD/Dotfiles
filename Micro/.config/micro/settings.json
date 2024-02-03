@@ -1,0 +1,16 @@
+{
+    "cursorline": false,
+    "ft:go": {
+        "tabstospaces": false
+    },
+    "ft:python": {
+        "tabsize": 4,
+        "tabstospaces": true
+    },
+    "ft:ruby": {
+        "tabsize": 2
+    },
+    "softwrap": true,
+    "tabmovement": true,
+    "tabstospaces": true
+}

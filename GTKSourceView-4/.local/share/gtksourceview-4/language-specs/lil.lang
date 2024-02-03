@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ New Modifications:
+
+ Description: Adaptation of the lua.lang file for use with Lil (a scripting
+ language).
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ Original Information:
+
+ This file is part of GtkSourceView
+
+ Author: Stefano Palazzo <stefano-palazzo@ubuntu.com>
+ Copyright (C) 2012 Stefano Palazzo <stefano-palazzo@ubuntu.com>
+
+ GtkSourceView is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+
+ GtkSourceView is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with this library; if not, see <http://www.gnu.org/licenses/>.
+
+-->
+<language id="lilt" name="Lil" version="2.0" _section="Script">
+  <metadata>
+    <property name="mimetypes">text/x-lilt;application/x-lilt;text/x-lilt</property>
+    <property name="globs">*.lil;*.lilt</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+
+  <styles>
+    <style id="comment" name="Comment" map-to="def:comment"/>
+    <style id="string" name="String" map-to="def:string"/>
+    <style id="keyword" name="Keyword" map-to="def:keyword"/>
+    <style id="escape" name="Escaped Character" map-to="def:special-char"/>
+    <style id="reserved" name="Reserved Identifier" map-to="def:keyword"/>
+    <style id="label" name="Label" map-to="def:keyword"/>
+    <style id="function" name="Function" map-to="def:function"/>
+    <style id="nil-value" name="Nil Constant" map-to="def:special-constant"/>
+    <style id="boolean" name="Boolean value" map-to="def:boolean"/>
+  </styles>
+
+  <definitions>
+    <context id="lilt-escape" style-ref="escape">
+      <match>\\(\d{1,3}|a|b|f|n|r|t|u{[0-9a-fA-F]+?}|v|x[0-9a-fA-F]{2}|z|\\|"|'|\[|\])</match>
+    </context>
+
+    <context id="label" style-ref="label">
+      <match>\:\:[A-Za-z_][A-Za-z0-9_]*\:\:</match>
+    </context>
+
+    <context id="string" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+      <start>["]</start>
+      <end>\%{0@start}</end>
+      <include>
+        <context ref="lilt-escape"/>
+        <context ref="def:line-continue"/>
+      </include>
+    </context>
+
+    <context id="line-comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+      <start>#</start>
+      <include>
+	<context ref="def:in-comment"/>
+      </include>
+    </context>
+
+    <context id="keywords" style-ref="keyword">
+        <keyword>on</keyword>
+        <keyword>if</keyword>
+        <keyword>else</keyword>
+        <keyword>elseif</keyword>
+        <keyword>end</keyword>
+        <keyword>while</keyword>
+        <keyword>each</keyword>
+        <keyword>send</keyword>
+        <keyword>do</keyword>
+        <keyword>select</keyword>
+        <keyword>extract</keyword>
+        <keyword>update</keyword>
+        <keyword>insert</keyword>
+        <keyword>into</keyword>
+        <keyword>from</keyword>
+        <keyword>where</keyword>
+        <keyword>by</keyword>
+        <keyword>orderby</keyword>
+        <keyword>asc</keyword>
+        <keyword>desc</keyword>
+        <keyword>with</keyword>
+        <keyword>local</keyword>
+        <keyword>list</keyword>
+        <keyword>table</keyword>
+        <keyword>dict</keyword>
+    </context>
+
+    <context id="functions" style-ref="function">
+        <keyword>floor</keyword>
+        <keyword>cos</keyword>
+        <keyword>sin</keyword>
+        <keyword>tan</keyword>
+        <keyword>exp</keyword>
+        <keyword>ln</keyword>
+        <keyword>sqrt</keyword>
+        <keyword>sum</keyword>
+        <keyword>prod</keyword>
+        <keyword>min</keyword>
+        <keyword>max</keyword>
+        <keyword>raze</keyword>
+        <keyword>count</keyword>
+        <keyword>first</keyword>
+        <keyword>last</keyword>
+        <keyword>range</keyword>
+        <keyword>keys</keyword>
+        <keyword>rows</keyword>
+        <keyword>cols</keyword>
+        <keyword>split</keyword>
+        <keyword>fuse</keyword>
+        <keyword>cat</keyword>
+        <keyword>take</keyword>
+        <keyword>drop</keyword>
+        <keyword>in</keyword>
+        <keyword>at</keyword>
+        <keyword>join</keyword>
+        <keyword>cross</keyword>
+        <keyword>parse</keyword>
+        <keyword>format</keyword>
+        <keyword>typeof</keyword>
+        <keyword>unless</keyword>
+        <keyword>flip</keyword>
+        <keyword>limit</keyword>
+        <keyword>mag</keyword>
+        <keyword>unit</keyword>
+        <keyword>heading</keyword>
+        <keyword>input</keyword>
+        <keyword>show</keyword>
+        <keyword>print</keyword>
+        <keyword>error</keyword>
+        <keyword>dir</keyword>
+        <keyword>path</keyword>
+        <keyword>read</keyword>
+        <keyword>write</keyword>
+        <keyword>exit</keyword>
+        <keyword>shell</keyword>
+        <keyword>eval</keyword>
+        <keyword>import</keyword>
+        <keyword>random</keyword>
+        <keyword>readcsv</keyword>
+        <keyword>writecsv</keyword>
+        <keyword>readxml</keyword>
+        <keyword>writexml</keyword>
+        <keyword>readdeck</keyword>
+        <keyword>writedeck</keyword>
+        <keyword>array</keyword>
+        <keyword>image</keyword>
+        <keyword>sound</keyword>
+    </context>
+
+    <context id="lilt-reserved" style-ref="reserved">
+      <keyword>_[A-Z][A-Za-z0-9_]*</keyword>
+    </context>
+
+    <context id="nil-value" style-ref="nil-value">
+       <keyword>nil</keyword>
+    </context>
+
+    <context id="boolean" style-ref="boolean">
+       <keyword>false</keyword>
+       <keyword>true</keyword>
+    </context>
+
+    <context id="lilt" class="no-spell-check">
+      <include>
+        <context ref="def:shebang"/>
+        <context ref="label"/>
+        <context ref="string"/>
+        <context ref="line-comment"/>
+        <context ref="keywords"/>
+        <context ref="functions"/>
+        <context ref="lilt-reserved"/>
+        <context ref="nil-value"/>
+        <context ref="boolean"/>
+      </include>
+    </context>
+
+  </definitions>
+</language>
