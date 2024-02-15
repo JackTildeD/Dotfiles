@@ -1,0 +1,6 @@
+[submodule "Submodules/open-relay"]
+	path = Submodules/open-relay
+	url = git@github.com-account1:kreativekorp/open-relay.git
+[submodule ".submodules/UnifontEX"]
+	path = .submodules/UnifontEX
+	url = git@github.com-account1:stgiga/UnifontEX.git
