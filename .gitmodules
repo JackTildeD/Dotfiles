@@ -4,3 +4,9 @@
 [submodule ".submodules/UnifontEX"]
 	path = .submodules/UnifontEX
 	url = git@github.com:stgiga/UnifontEX.git
+[submodule ".submodules/space-grotesk"]
+	path = .submodules/space-grotesk
+	url = git@github.com:floriankarsten/space-grotesk.git
+[submodule ".submodules/spacemono"]
+	path = .submodules/spacemono
+	url = git@github.com:googlefonts/spacemono

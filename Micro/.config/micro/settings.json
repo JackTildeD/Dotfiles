@@ -1,4 +1,5 @@
 {
+    "colorscheme": "monokai-dark",
     "cursorline": false,
     "ft:go": {
         "tabstospaces": false
